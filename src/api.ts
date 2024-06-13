@@ -1,7 +1,7 @@
 // В данном случае мы не используем бандлеры, поэтому в импорте нужно указывать ссылки на веб-ресурсы Firebase
 // import { firebaseConfig } from "firebaseConfig";
-import { initializeApp } from "firebase/app";
-import {collection, getDocs, getFirestore, query, where} from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 // Это конфигурация Firebase, у каждого проекта она своя. Её нужно скопировать из консоли вашего проекта
 const firebaseConfig = {
@@ -12,7 +12,6 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_APP_ID
 };
-
 
 interface User {
   email: string;
@@ -38,70 +37,12 @@ export const getUsers = async () => {
     docsSnapshot.forEach((doc) => {
       const data = doc.data() as User;
       result.push(data);
-    })
+    });
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 
   console.log(result);
 
   return result;
 }
-
-
-
-// const signupForm = document.getElementById("signupForm");
-// const signinForm = document.getElementById("signinForm");
-// const signupEmailInput = document.getElementById("signupEmail");
-// const signupPasswordInput = document.getElementById("signupPassword");
-// const signinEmailInput = document.getElementById("signinEmail");
-// const signinPasswordInput = document.getElementById("signinPassword");
-// // const message = document.getElementById("message");
-//
-// signupForm.addEventListener("submit", async (e) => {
-//   e.preventDefault();
-//   const email = signupEmailInput.value;
-//   const password = signupPasswordInput.value;
-//
-//   try {
-//        await createUserWithEmailAndPassword(auth, email, password);
-//     message.textContent = "Account created successfully!";
-//
-//   } catch (error) {
-//     message.textContent = error.message;
-//   }
-// });
-//
-//
-// signinForm.addEventListener("submit", async (e) => {
-//   e.preventDefault();
-//   const email = signinEmailInput.value;
-//   const password = signinPasswordInput.value;
-//
-//   try {
-//
-//     await signInWithEmailAndPassword(auth, email, password);
-//     message.textContent = "Logged in successfully!";
-//
-//   } catch (error) {
-//     message.textContent = error.message;
-//   }
-// });
-
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAscDWvT-xfNnrUjVlddeu2u5OHCf7BI2Q",
-//   authDomain: "study-fb864.firebaseapp.com",
-//   projectId: "study-fb864",
-//   storageBucket: "study-fb864.appspot.com",
-//   messagingSenderId: "132116981664",
-//   appId: "1:132116981664:web:680e87ea426d2ddab3e6c5"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
